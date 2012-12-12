@@ -1,0 +1,63 @@
+<!--
+   Copyright 2012 PayPal.
+  
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+  
+        http://www.apache.org/licenses/LICENSE-2.0
+  
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<!doctype html>
+<script src="../js/jquery.js"></script>
+<script src="../js/pay.js"></script>
+<style type="text/css">
+	#mainPopup {
+		margin: 10px;
+		padding: 10px;
+		height: 200px;
+		width: 400px;
+		font-family: Helvetica, Ubuntu, Arial, sans-serif;
+	}
+	h1 {
+		font-size: 2em;
+	}
+</style>
+
+<center>
+<div id="mainPopup">
+	<h1>PayPal Chrome Extension</h1>
+	<p>This extension enables you to donate to any site (as long as it contains a <i>parsable</i> email).</p>
+	<p>If no valid address was found this uses an address-field.</p>
+	<hr/>
+	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+		<!-- Used to identify the transaction type -->
+		<input type="hidden" name="cmd" value="_donations">
+		<input type="number" value="10.00" step="0.10" min="0.00" id="amount" name="amount" />
+		<select id="currency" name="currency_code">
+			<option value="EUR">EUR</option>
+			<option value="GBP">GBP</option>
+			<option value="USD">USD</option>
+			<option value="CAD">CAD</option>
+			<option value="CHF">CHF</option>
+			<option value="CZK">CZK</option>
+			<option value="HKD">HKD</option>
+		</select>
+		<!-- The list of receivers gets added via JS -->
+		<select id="receivers" name="business">
+		</select>
+		<br/><br/>
+		<!-- Display the payment button. -->
+		<input type="image" name="submit" border="0"
+			src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="PayPal - The safer, easier way to pay online" />
+		<img alt="" border="0" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" />
+	</form>
+	<br/>
+</div>
+</center>
